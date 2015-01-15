@@ -4,7 +4,7 @@
 # https://github.com/Red5/docker
 #
 
-FROM dockerfile/oracle-java7
+FROM oracle-java7
 MAINTAINER Paul Gregoire <mondain@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
