@@ -20,8 +20,6 @@ We provides multiple tagged images:
 * `oraclejdk7-red5-104R`: Red5 1.0.4 Release + Oracle Java 7 JDK
 * `oraclejdk7-red5-105S`: Red5 1.0.5 Snapshot + Oracle Java 7 JDK
 
-# EVERYTHING BELOW THIS LINE IS NOT TESTED!!
-
 
 For example, you can run a `Red5` container with the following command:
 
