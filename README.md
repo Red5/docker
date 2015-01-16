@@ -38,3 +38,11 @@ For example, you can run a `Red5` container with the following command:
 ### Usage
 
     docker run -it --rm mondain/red5
+
+    
+### Additional Information
+
+ * [Container linking](https://docs.docker.com/userguide/dockerlinks/)
+ * [Managing data](https://docs.docker.com/userguide/dockervolumes/)
+ 
+
