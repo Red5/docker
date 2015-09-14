@@ -1,5 +1,7 @@
 #
 # Red5 + Java 7 Dockerfile
+# 
+# This is meant to be used as a point for extension.
 #
 # https://github.com/Red5/docker
 # https://hub.docker.com/_/java/
@@ -25,7 +27,3 @@ RUN apt-get update && \
 VOLUME ["/opt/red5"]
 
 WORKDIR /opt/red5
-
-EXPOSE 843 1935 5080 5443 8081 8443
-
-ENTRYPOINT ["./red5.sh"]
