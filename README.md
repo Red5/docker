@@ -14,7 +14,7 @@ What is [Docker](https://www.docker.com/)?
 
 We provides multiple tagged images:
 
-* `latest` (default): Red5 1.0.4 Release + OpenJDK Java 7 JDK (alias to `openjdk7-red5-104R`)
+* `latest` (default): Red5 1.0.6 Release + OpenJDK Java 7 JDK (alias to `red5-106`)
 * `openjdk7-red5-104R`: Red5 1.0.4 Release + OpenJDK Java 7 JDK
 * `openjdk7-red5-105S`: Red5 1.0.5 Snapshot + OpenJDK Java 7 JDK
 * `oraclejdk7-red5-104R`: Red5 1.0.4 Release + Oracle Java 7 JDK
@@ -23,7 +23,7 @@ We provides multiple tagged images:
 
 For example, you can run a `Red5` container with the following command:
 
-    docker run -it --rm mondain/red5
+    docker run -dit --rm mondain/red5
 
 
 ### Installation
@@ -37,7 +37,7 @@ For example, you can run a `Red5` container with the following command:
 
 ### Usage
 
-    docker run -it --rm mondain/red5
+    docker run -dit -P --rm mondain/red5
 
     
 ### Additional Information

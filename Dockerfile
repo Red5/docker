@@ -1,1 +1,1 @@
-openjdk7-red5-104R/Dockerfile
+red5-106/Dockerfile
