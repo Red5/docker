@@ -22,7 +22,7 @@ We provides multiple tagged images:
 
 For example, you can run a `Red5` container with the following command:
 
-    docker run -dit --rm mondain/red5
+    docker run -it --rm mondain/red5
 
 
 ### Installation
@@ -36,8 +36,15 @@ For example, you can run a `Red5` container with the following command:
 
 ### Usage
 
-    docker run -dit -P --rm mondain/red5
+ 1. Starts red5 and exposes default ports for http and rtmp/e
+```sh
+    docker run -it -p 5080:5080 -p 1935:1935 --rm mondain/red5
+```
 
+ 1. Starts red5 and exposes default ports for http, rtmp/e, and websocket
+```sh
+    docker run -it -p 5080:5080 -p 1935:1935 -p 8081:8081 --rm mondain/red5
+```
     
 ### Additional Information
 
