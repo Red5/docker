@@ -6,9 +6,8 @@ What is [Docker](https://www.docker.com/)?
 
 ### Docker Base Images
 
-* [dockerfile/ubuntu](http://dockerfile.github.io/#/ubuntu)
-* [dockerfile/java](http://dockerfile.github.io/#/java)
-
+* [ubuntu](https://registry.hub.docker.com/_/ubuntu/)
+* [java](https://registry.hub.docker.com/_/java/)
 
 ### Docker Tags
 

@@ -4,7 +4,7 @@
 # https://github.com/Red5/docker
 #
 
-FROM dockerfile/java:openjdk-7-jdk
+FROM java:openjdk-7-jdk
 MAINTAINER Paul Gregoire <mondain@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
