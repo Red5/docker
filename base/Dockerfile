@@ -22,6 +22,3 @@ RUN apt-get update && \
     tar -xzf red5.tar.gz && \
     mv red5-server-${RED5_VERSION}/* ${RED5_HOME} && \
     rm -rf red5*
-
-# https://docs.docker.com/userguide/dockervolumes/
-VOLUME [ $RED5_HOME ]
