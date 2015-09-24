@@ -13,8 +13,9 @@ ENV RED5_VERSION 1.0.6-RELEASE
 # Define RED5_HOME variable
 ENV RED5_HOME /opt/red5
 
+RUN mkdir -p $RED5_HOME
+
 RUN apt-get update && \
-    apt-get install -y wget && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \ 
     wget -q https://github.com/Red5/red5-server/releases/download/v${RED5_VERSION}/red5-server-${RED5_VERSION}-server.tar.gz -O red5.tar.gz && \
     tar -xzf red5.tar.gz && \
