@@ -1,12 +1,10 @@
 #
-# Red5 + Java 7 Dockerfile
-# 
-# This is meant to be used as a point for extension.
+# Red5 + Java 8 Dockerfile
 #
 # https://github.com/Red5/docker
 # https://hub.docker.com/_/java/
 #
-FROM java:7
+FROM java:8
 MAINTAINER Paul Gregoire <mondain@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -25,3 +23,9 @@ RUN apt-get update && \
 
 # https://docs.docker.com/userguide/dockervolumes/
 VOLUME [ $RED5_HOME ]
+
+WORKDIR /opt/red5
+
+EXPOSE 843 1935 5080 5443 8081 8443
+
+ENTRYPOINT ["./red5.sh"]

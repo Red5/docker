@@ -15,6 +15,12 @@ We provides multiple tagged images:
 
 * `latest` (default): Red5 1.0.6 Release + OpenJDK Java 7 JDK (alias to `red5-106`)
 * `base`: Red5 1.0.6 Release extendable base image
+* `base-jdk8`: Same version as above with OpenJDK 8
+* `red5-106-jdk8`: Red5 1.0.6 Release + OpenJDK 8
+* `red5-107-jdk8`: Red5 1.0.7 Snapshot + OpenJDK 8
+
+Older
+
 * `openjdk7-red5-104R`: Red5 1.0.4 Release + OpenJDK Java 7 JDK
 * `openjdk7-red5-105S`: Red5 1.0.5 Snapshot + OpenJDK Java 7 JDK
 * `oraclejdk7-red5-104R`: Red5 1.0.4 Release + Oracle Java 7 JDK
