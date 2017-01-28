@@ -10,7 +10,7 @@ FROM java:8
 MAINTAINER Paul Gregoire <mondain@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV RED5_VERSION 1.0.6-RELEASE
+ENV RED5_VERSION 1.0.8-RELEASE
 
 # Define RED5_HOME variable
 ENV RED5_HOME /opt/red5
