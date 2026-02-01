@@ -12,7 +12,7 @@ What is [Docker](https://www.docker.com/)?
 
 ### Docker Tags
 
-* `latest` (default): Red5 1.0.10 Release + Corretto 8 (Essentially OpenJDK 8)
+* `latest` (default): Red5 2.0.29 Release + JDK 21
 
 For example, you can run a `Red5` container with the following command:
 
@@ -45,4 +45,3 @@ For example, you can run a `Red5` container with the following command:
  * [Container linking](https://docs.docker.com/userguide/dockerlinks/)
  * [Managing data](https://docs.docker.com/userguide/dockervolumes/)
  
-
