@@ -44,4 +44,22 @@ For example, you can run a `Red5` container with the following command:
 
  * [Container linking](https://docs.docker.com/userguide/dockerlinks/)
  * [Managing data](https://docs.docker.com/userguide/dockervolumes/)
+
+### Docker Hub
+
+```plaintext
+  # build from this repo (root Dockerfile)
+  docker build -t mondain/red5:2.0.29 .
+
+  # sign in to Docker Hub
+  docker login
+
+  # tag for your Docker Hub namespace
+  docker tag mondain/red5:2.0.29 <youruser>/red5:2.0.29
+  docker tag mondain/red5:2.0.29 <youruser>/red5:latest
+
+  # push
+  docker push <youruser>/red5:2.0.29
+  docker push <youruser>/red5:latest
+```
  
