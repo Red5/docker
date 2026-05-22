@@ -65,7 +65,7 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ${{ env.REGISTRY_URL }}/${{ env.REPOSITORY_NAME }}:${{ env.RED5_VERSION }}
-            ${{ env.REGISTRY_URL }}/${{ env.REPOSITORY_NAME }}:${{ needs.retrieve-version-parts.outputs.major-version }}
-            ${{ env.REGISTRY_URL }}/${{ env.REPOSITORY_NAME }}:${{ needs.retrieve-version-parts.outputs.major-version }}.${{ needs.retrieve-version-parts.outputs.minor-version }}
-            ${{ env.REGISTRY_URL }}/${{ env.REPOSITORY_NAME }}:latest
+            ${{ secrets.DOCKERHUB_REPOSITORY }}:${{ env.RED5_VERSION }}
+            ${{ secrets.DOCKERHUB_REPOSITORY }}:${{ needs.retrieve-version-parts.outputs.major-version }}
+            ${{ secrets.DOCKERHUB_REPOSITORY }}:${{ needs.retrieve-version-parts.outputs.major-version }}.${{ needs.retrieve-version-parts.outputs.minor-version }}
+            ${{ secrets.DOCKERHUB_REPOSITORY }}:latest
