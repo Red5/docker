@@ -7,6 +7,16 @@ on:
         description: The version of Red5 Server to be pushed
         type: string
         required: true
+    secrets:
+      dockerhub-password:
+        description: Docker Hub password
+        required: true
+      dockerhub-username:
+        description: Docker Hub username
+        required: true
+      dockerhub-repository:
+        description: Docker Hub repository (e.g., username/repository)
+        required: true
 
 jobs:
   substring-version:
@@ -51,8 +61,8 @@ jobs:
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v4
         with:
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.dockerhub-password }}
+          username: ${{ secrets.dockerhub-username }}
       - name: Build and push Docker image
         uses: docker/build-push-action@v7
         env:
@@ -65,7 +75,7 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_REPOSITORY }}:${{ env.RED5_VERSION }}
-            ${{ secrets.DOCKERHUB_REPOSITORY }}:${{ needs.retrieve-version-parts.outputs.major-version }}
-            ${{ secrets.DOCKERHUB_REPOSITORY }}:${{ needs.retrieve-version-parts.outputs.major-version }}.${{ needs.retrieve-version-parts.outputs.minor-version }}
-            ${{ secrets.DOCKERHUB_REPOSITORY }}:latest
+            ${{ secrets.dockerhub-repository }}:${{ env.RED5_VERSION }}
+            ${{ secrets.dockerhub-repository }}:${{ needs.retrieve-version-parts.outputs.major-version }}
+            ${{ secrets.dockerhub-repository }}:${{ needs.retrieve-version-parts.outputs.major-version }}.${{ needs.retrieve-version-parts.outputs.minor-version }}
+            ${{ secrets.dockerhub-repository }}:latest
