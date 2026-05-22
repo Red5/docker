@@ -1,0 +1,71 @@
+name: Push Docker Image
+
+on:
+  workflow_call:
+    inputs:
+      version:
+        description: The version of Red5 Server to be pushed
+        type: string
+        required: true
+
+jobs:
+  substring-version:
+    if: github.repository == 'Juansecu/red5-server'
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.substring.outputs.substring }}
+    steps:
+      - name: Substring version
+        id: substring
+        uses: bhowell2/github-substring-action@1.0.2
+        with:
+          value: ${{ github.event.inputs.version }}
+          index_of_str: v
+
+  retrieve-version-parts:
+    if: github.repository == 'Juansecu/red5-server'
+    runs-on: ubuntu-latest
+    needs: substring-version
+    outputs:
+      major-version: ${{ steps.split.outputs._0 }}
+      minor-version: ${{ steps.split.outputs._1 }}
+      patch-version: ${{ steps.split.outputs._2 }}
+    steps:
+      - name: Retrieve version parts
+        id: split
+        uses: winterjung/split@v2
+        with:
+          msg: ${{ needs.substring-version.outputs.version }}
+          separator: .
+
+  push-docker-image:
+    if: github.repository == 'Juansecu/red5-server'
+    runs-on: ubuntu-latest
+    needs: retrieve-version-parts
+    steps:
+      - uses: actions/checkout@v6
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v4
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v4
+        with:
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v7
+        env:
+          RED5_VERSION: ${{ needs.retrieve-version-parts.outputs.major-version }}.${{needs.retrieve-version-parts.outputs.minor-version}}.${{ needs.retrieve-version-parts.outputs.patch-version }}
+        with:
+          build-args: |
+            RED5_VERSION=${{ env.RED5_VERSION }}
+          context: .
+          file: Dockerfile
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            ${{ env.REGISTRY_URL }}/${{ env.REPOSITORY_NAME }}:${{ env.RED5_VERSION }}
+            ${{ env.REGISTRY_URL }}/${{ env.REPOSITORY_NAME }}:${{ needs.retrieve-version-parts.outputs.major-version }}
+            ${{ env.REGISTRY_URL }}/${{ env.REPOSITORY_NAME }}:${{ needs.retrieve-version-parts.outputs.major-version }}.${{ needs.retrieve-version-parts.outputs.minor-version }}
+            ${{ env.REGISTRY_URL }}/${{ env.REPOSITORY_NAME }}:latest
