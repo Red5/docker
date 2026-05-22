@@ -19,7 +19,7 @@ jobs:
         id: substring
         uses: bhowell2/github-substring-action@1.0.2
         with:
-          value: ${{ github.event.inputs.version }}
+          value: ${{ inputs.version }}
           index_of_str: v
 
   retrieve-version-parts:
