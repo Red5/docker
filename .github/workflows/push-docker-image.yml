@@ -74,7 +74,7 @@ jobs:
         with:
           build-args: |
             RED5_VERSION=${{ env.RED5_VERSION }}
-          context: ./docker-repo
+          context: .
           file: ./docker-repo/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
