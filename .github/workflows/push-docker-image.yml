@@ -20,7 +20,7 @@ on:
 
 jobs:
   substring-version:
-    if: github.repository == 'Juansecu/red5-server'
+    if: github.repository == 'Red5/red5-server'
     runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.substring.outputs.substring }}
@@ -33,7 +33,7 @@ jobs:
           index_of_str: v
 
   retrieve-version-parts:
-    if: github.repository == 'Juansecu/red5-server'
+    if: github.repository == 'Red5/red5-server'
     runs-on: ubuntu-latest
     needs: substring-version
     outputs:
@@ -49,13 +49,13 @@ jobs:
           separator: .
 
   push-docker-image:
-    if: github.repository == 'Juansecu/red5-server'
+    if: github.repository == 'Red5/red5-server'
     runs-on: ubuntu-latest
     needs: retrieve-version-parts
     steps:
       - uses: actions/checkout@v6
         with:
-          repository: 'Juansecu/Red5-Docker'
+          repository: 'Red5/docker'
           path: docker-repo
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Set up Docker Buildx
