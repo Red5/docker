@@ -71,7 +71,6 @@ jobs:
         run: |
           pwd
           ls -la docker-repo
-          git ls-files -s docker-repo/Dockerfile
           cat docker-repo/Dockerfile
       - name: Build and push Docker image
         uses: docker/build-push-action@v7
