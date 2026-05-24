@@ -67,6 +67,12 @@ jobs:
         with:
           password: ${{ secrets.dockerhub-password }}
           username: ${{ secrets.dockerhub-username }}
+      - name: Debug repository contents
+        run: |
+          pwd
+          ls -la
+          ls -la docker-repo
+          cat docker-repo/Dockerfile
       - name: Build and push Docker image
         uses: docker/build-push-action@v7
         env:
