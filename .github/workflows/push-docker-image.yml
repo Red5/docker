@@ -19,38 +19,33 @@ on:
         required: true
 
 jobs:
-  substring-version:
-    if: github.repository == 'Red5/red5-server'
-    runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.substring.outputs.substring }}
-    steps:
-      - name: Substring version
-        id: substring
-        uses: bhowell2/github-substring-action@1.0.2
-        with:
-          value: ${{ inputs.version }}
-          index_of_str: v
-
   retrieve-version-parts:
     if: github.repository == 'Red5/red5-server'
-    runs-on: ubuntu-latest
-    needs: substring-version
+    runs-on: ubuntu-24.04
     outputs:
-      major-version: ${{ steps.split.outputs._0 }}
-      minor-version: ${{ steps.split.outputs._1 }}
-      patch-version: ${{ steps.split.outputs._2 }}
+      major-version: ${{ steps.split.outputs.major }}
+      minor-version: ${{ steps.split.outputs.minor }}
+      patch-version: ${{ steps.split.outputs.patch }}
     steps:
       - name: Retrieve version parts
         id: split
-        uses: winterjung/split@v2
-        with:
-          msg: ${{ needs.substring-version.outputs.version }}
-          separator: .
+        env:
+          RELEASE_TAG: ${{ inputs.version }}
+        run: |
+          version="${RELEASE_TAG#v}"
+          if ! [[ "$version" =~ ^([0-9]+)\.([0-9]+)\.([0-9]+)$ ]]; then
+            echo "::error::Release tag '$RELEASE_TAG' is not of the form vMAJOR.MINOR.PATCH"
+            exit 1
+          fi
+          {
+            echo "major=${BASH_REMATCH[1]}"
+            echo "minor=${BASH_REMATCH[2]}"
+            echo "patch=${BASH_REMATCH[3]}"
+          } >> "$GITHUB_OUTPUT"
 
   push-docker-image:
     if: github.repository == 'Red5/red5-server'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: retrieve-version-parts
     steps:
       - uses: actions/checkout@v6
