@@ -12,7 +12,7 @@ What is [Docker](https://www.docker.com/)?
 
 ### Docker Tags
 
-* `latest` (default): Red5 2.0.29 Release + JDK 21
+* `latest` (default): Red5 2.2.0 Release + JDK 25
 
 For example, you can run a `Red5` container with the following command:
 
@@ -49,17 +49,17 @@ For example, you can run a `Red5` container with the following command:
 
 ```plaintext
   # build from this repo (root Dockerfile)
-  docker build -t mondain/red5:2.0.29 .
+  docker build -t mondain/red5:2.2.0 .
 
   # sign in to Docker Hub
   docker login
 
   # tag for your Docker Hub namespace
-  docker tag mondain/red5:2.0.29 <youruser>/red5:2.0.29
-  docker tag mondain/red5:2.0.29 <youruser>/red5:latest
+  docker tag mondain/red5:2.2.0 <youruser>/red5:2.2.0
+  docker tag mondain/red5:2.2.0 <youruser>/red5:latest
 
   # push
-  docker push <youruser>/red5:2.0.29
+  docker push <youruser>/red5:2.2.0
   docker push <youruser>/red5:latest
 ```
  

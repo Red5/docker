@@ -1,14 +1,14 @@
 #
-# Red5 + JDK 21 Dockerfile
+# Red5 + JDK 25 Dockerfile
 #
 # https://github.com/Red5/docker
 # https://hub.docker.com/_/eclipse-temurin
 #
-FROM eclipse-temurin:21-jdk
+FROM eclipse-temurin:25-jdk
 LABEL org.opencontainers.image.authors="Paul Gregoire <mondain@gmail.com>"
 
 # Define as an ARG with a default value
-ARG RED5_VERSION=2.0.34
+ARG RED5_VERSION=2.2.0
 
 ENV DEBIAN_FRONTEND=noninteractive
 # Assign ARG value to ENV
